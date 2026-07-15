@@ -1,10 +1,10 @@
-/* News feed — role attribute is language-independent.
-   ponytail: hides group/profile feeds too; scope via a path-flag script like twitter.js if that ever bothers you. */
-div[role="feed"] {
+/* Home page: hide the whole main region (feed + composer). Path flag comes from
+   path-flag.js; role="main" is language-independent and survives FB class churn. */
+html[data-feed-blocker-path="/"] div[role="main"] {
   display: none !important;
 }
 
-/* Stories rail on the home page (aria-label is localized; harmless no-op if it doesn't match) */
-div[aria-label="Stories"] {
+/* Fallback for feeds that still carry role="feed" (groups, watch, profiles). */
+div[role="feed"] {
   display: none !important;
 }

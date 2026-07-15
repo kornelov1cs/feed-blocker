@@ -7,12 +7,13 @@
     {
       "matches": ["*://*.facebook.com/*"],
       "css": ["facebook.css"],
+      "js": ["path-flag.js"],
       "run_at": "document_start"
     },
     {
       "matches": ["*://*.twitter.com/*", "*://*.x.com/*"],
       "css": ["twitter.css"],
-      "js": ["twitter.js"],
+      "js": ["path-flag.js"],
       "run_at": "document_start"
     },
     {
