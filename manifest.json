@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Feed Blocker",
+  "version": "1.0.0",
+  "description": "Hides Facebook, Twitter/X and YouTube feeds for focused work.",
+  "content_scripts": [
+    {
+      "matches": ["*://*.facebook.com/*"],
+      "css": ["facebook.css"],
+      "run_at": "document_start"
+    },
+    {
+      "matches": ["*://*.twitter.com/*", "*://*.x.com/*"],
+      "css": ["twitter.css"],
+      "js": ["twitter.js"],
+      "run_at": "document_start"
+    },
+    {
+      "matches": ["*://*.youtube.com/*"],
+      "css": ["youtube.css"],
+      "run_at": "document_start"
+    }
+  ]
+}

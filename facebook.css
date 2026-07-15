@@ -1,0 +1,10 @@
+/* News feed — role attribute is language-independent.
+   ponytail: hides group/profile feeds too; scope via a path-flag script like twitter.js if that ever bothers you. */
+div[role="feed"] {
+  display: none !important;
+}
+
+/* Stories rail on the home page (aria-label is localized; harmless no-op if it doesn't match) */
+div[aria-label="Stories"] {
+  display: none !important;
+}
