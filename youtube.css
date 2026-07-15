@@ -9,11 +9,12 @@ ytd-watch-next-secondary-results-renderer {
   display: none !important;
 }
 
-/* Shorts: shelves anywhere, plus sidebar nav entries ("Shorts" is an unlocalized brand name) */
+/* Shorts: shelves anywhere, plus sidebar nav entries.
+   Matched by href (language-independent) — title/aria-label attrs no longer present in 2026 markup. */
 ytd-reel-shelf-renderer,
 ytd-rich-shelf-renderer[is-shorts],
-ytd-rich-section-renderer:has(ytd-rich-shelf-renderer),
-ytd-guide-entry-renderer:has(a[title="Shorts"]),
-ytd-mini-guide-entry-renderer[aria-label="Shorts"] {
+ytd-rich-section-renderer:has(ytd-reel-shelf-renderer),
+ytd-guide-entry-renderer:has(a[href^="/shorts"]),
+ytd-mini-guide-entry-renderer:has(a[href^="/shorts"]) {
   display: none !important;
 }
