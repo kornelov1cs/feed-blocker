@@ -1,9 +1,26 @@
 {
   "manifest_version": 3,
   "name": "Feed Blocker",
-  "version": "1.0.0",
-  "description": "Hides Facebook, Twitter/X and YouTube feeds for focused work.",
+  "version": "1.1.0",
+  "description": "Hides Facebook, Twitter/X and YouTube feeds, plus a focus timer that hard-blocks distracting sites.",
+  "permissions": ["storage", "alarms", "offscreen"],
+  "background": { "service_worker": "focus/worker.js" },
+  "action": { "default_popup": "focus/popup.html" },
   "content_scripts": [
+    {
+      "matches": [
+        "*://*.facebook.com/*",
+        "*://*.twitter.com/*",
+        "*://*.x.com/*",
+        "*://*.youtube.com/*",
+        "*://*.reddit.com/*",
+        "*://*.instagram.com/*",
+        "*://*.tiktok.com/*",
+        "*://*.9gag.com/*"
+      ],
+      "js": ["focus/focus-block.js"],
+      "run_at": "document_start"
+    },
     {
       "matches": ["*://*.facebook.com/*"],
       "css": ["facebook.css"],

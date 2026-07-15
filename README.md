@@ -13,6 +13,15 @@ Twitter path detection).
 
 To temporarily allow feeds, toggle the extension off on the same page.
 
+## Focus timer
+
+Click the extension icon → set focus/break minutes (default 50/10) → **Start**.
+During a focus phase the sites listed in `manifest.json` (first `content_scripts`
+entry) are fully blocked with a countdown screen; `music.youtube.com` stays
+allowed for focus music. A chime plays at each transition, breaks lift the
+block, and the loop repeats until you hit **Stop**. To change the blocked
+sites, edit the `matches` list in `manifest.json` and reload the extension.
+
 ## If a feed reappears
 
 The site changed a selector. Open the matching `.css` file, fix the selector

@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  body { width: 220px; margin: 0; padding: 16px; font-family: system-ui, sans-serif;
+         background: #111; color: #eee; display: flex; flex-direction: column; gap: 12px; }
+  #status { font-size: 2.2rem; font-weight: 700; text-align: center; min-height: 2.6rem; }
+  #phase { text-align: center; color: #888; margin-top: -8px; }
+  label { display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem; }
+  input { width: 56px; background: #222; color: #eee; border: 1px solid #444;
+          border-radius: 4px; padding: 4px; text-align: right; }
+  button { padding: 10px; border: 0; border-radius: 6px; font-size: 1rem; font-weight: 600;
+           cursor: pointer; background: #2d7d46; color: #fff; }
+  button.running { background: #a33; }
+</style>
+</head>
+<body>
+  <div id="status">–</div>
+  <div id="phase"></div>
+  <label>Focus <span><input id="focus" type="number" min="1" value="50"> min</span></label>
+  <label>Break <span><input id="break" type="number" min="1" value="10"> min</span></label>
+  <button id="toggle">Start</button>
+  <script src="popup.js"></script>
+</body>
+</html>
