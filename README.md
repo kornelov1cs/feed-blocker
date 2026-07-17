@@ -11,7 +11,9 @@ Twitter path detection).
 2. Enable **Developer mode** (top right)
 3. Click **Load unpacked** and select this folder
 
-To temporarily allow feeds, toggle the extension off on the same page.
+To temporarily allow feeds, click the extension icon and untick **Hide feeds**
+— it applies instantly to open tabs. Tick it again to hide feeds. (The focus
+timer's hard block is separate and unaffected.)
 
 ## Focus timer
 

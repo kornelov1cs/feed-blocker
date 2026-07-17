@@ -1,20 +1,23 @@
+/* All rules guarded by :not([data-feed-blocker-off]) — the popup toggle sets that
+   attribute via feed-toggle.js to pause feed hiding. */
+
 /* Home page recommendation grid */
-ytd-browse[page-subtype="home"] ytd-rich-grid-renderer {
+html:not([data-feed-blocker-off]) ytd-browse[page-subtype="home"] ytd-rich-grid-renderer {
   display: none !important;
 }
 
 /* Related-videos sidebar on watch pages */
-#related,
-ytd-watch-next-secondary-results-renderer {
+html:not([data-feed-blocker-off]) #related,
+html:not([data-feed-blocker-off]) ytd-watch-next-secondary-results-renderer {
   display: none !important;
 }
 
 /* Shorts: shelves anywhere, plus sidebar nav entries.
    Matched by href (language-independent) — title/aria-label attrs no longer present in 2026 markup. */
-ytd-reel-shelf-renderer,
-ytd-rich-shelf-renderer[is-shorts],
-ytd-rich-section-renderer:has(ytd-reel-shelf-renderer),
-ytd-guide-entry-renderer:has(a[href^="/shorts"]),
-ytd-mini-guide-entry-renderer:has(a[href^="/shorts"]) {
+html:not([data-feed-blocker-off]) ytd-reel-shelf-renderer,
+html:not([data-feed-blocker-off]) ytd-rich-shelf-renderer[is-shorts],
+html:not([data-feed-blocker-off]) ytd-rich-section-renderer:has(ytd-reel-shelf-renderer),
+html:not([data-feed-blocker-off]) ytd-guide-entry-renderer:has(a[href^="/shorts"]),
+html:not([data-feed-blocker-off]) ytd-mini-guide-entry-renderer:has(a[href^="/shorts"]) {
   display: none !important;
 }

@@ -1,5 +1,6 @@
 /* Home timeline only — profiles, search and single tweets keep their columns.
-   data-testid is language-independent; the path flag comes from twitter.js. */
-html[data-feed-blocker-path="/home"] div[data-testid="primaryColumn"] section[role="region"] {
+   data-testid is language-independent; the path flag comes from path-flag.js.
+   :not([data-feed-blocker-off]) lets the popup toggle pause feed hiding. */
+html[data-feed-blocker-path="/home"]:not([data-feed-blocker-off]) div[data-testid="primaryColumn"] section[role="region"] {
   display: none !important;
 }

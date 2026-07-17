@@ -1,10 +1,13 @@
+/* All rules guarded by :not([data-feed-blocker-off]) — the popup toggle sets that
+   attribute via feed-toggle.js to pause feed hiding. */
+
 /* Home page: hide the whole main region (feed + composer). Path flag comes from
    path-flag.js; role="main" is language-independent and survives FB class churn. */
-html[data-feed-blocker-path="/"] div[role="main"] {
+html[data-feed-blocker-path="/"]:not([data-feed-blocker-off]) div[role="main"] {
   display: none !important;
 }
 
 /* Fallback for feeds that still carry role="feed" (groups, watch, profiles). */
-div[role="feed"] {
+html:not([data-feed-blocker-off]) div[role="feed"] {
   display: none !important;
 }

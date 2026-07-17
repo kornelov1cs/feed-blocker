@@ -10,6 +10,7 @@
   label { display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem; }
   input { width: 56px; background: #222; color: #eee; border: 1px solid #444;
           border-radius: 4px; padding: 4px; text-align: right; }
+  input[type="checkbox"] { width: 16px; height: 16px; accent-color: #2d7d46; }
   button { padding: 10px; border: 0; border-radius: 6px; font-size: 1rem; font-weight: 600;
            cursor: pointer; background: #2d7d46; color: #fff; }
   button.running { background: #a33; }
@@ -18,6 +19,7 @@
 <body>
   <div id="status">–</div>
   <div id="phase"></div>
+  <label>Hide feeds <input id="feeds" type="checkbox" checked></label>
   <label>Focus <span><input id="focus" type="number" min="1" value="50"> min</span></label>
   <label>Break <span><input id="break" type="number" min="1" value="10"> min</span></label>
   <button id="toggle">Start</button>

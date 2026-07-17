@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Feed Blocker",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Hides Facebook, Twitter/X and YouTube feeds, plus a focus timer that hard-blocks distracting sites.",
   "permissions": ["storage", "alarms", "offscreen"],
   "background": { "service_worker": "focus/worker.js" },
@@ -24,18 +24,19 @@
     {
       "matches": ["*://*.facebook.com/*"],
       "css": ["facebook.css"],
-      "js": ["path-flag.js"],
+      "js": ["path-flag.js", "feed-toggle.js"],
       "run_at": "document_start"
     },
     {
       "matches": ["*://*.twitter.com/*", "*://*.x.com/*"],
       "css": ["twitter.css"],
-      "js": ["path-flag.js"],
+      "js": ["path-flag.js", "feed-toggle.js"],
       "run_at": "document_start"
     },
     {
       "matches": ["*://*.youtube.com/*"],
       "css": ["youtube.css"],
+      "js": ["feed-toggle.js"],
       "run_at": "document_start"
     }
   ]

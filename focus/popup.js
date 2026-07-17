@@ -1,7 +1,8 @@
 const $ = (id) => document.getElementById(id);
-let state = { phase: "off", phaseEndsAt: 0, focusMin: 50, breakMin: 10 };
+let state = { phase: "off", phaseEndsAt: 0, focusMin: 50, breakMin: 10, feedsOff: false };
 
 function render() {
+  $("feeds").checked = !state.feedsOff;
   const running = state.phase !== "off";
   $("toggle").textContent = running ? "Stop" : "Start";
   $("toggle").classList.toggle("running", running);
@@ -29,6 +30,10 @@ chrome.storage.onChanged.addListener((changes) => {
 });
 
 setInterval(render, 500);
+
+$("feeds").addEventListener("change", () => {
+  chrome.storage.local.set({ feedsOff: !$("feeds").checked });
+});
 
 $("toggle").addEventListener("click", () => {
   if (state.phase !== "off") {
