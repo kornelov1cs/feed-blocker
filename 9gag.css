@@ -1,0 +1,7 @@
+/* All rules guarded by :not([data-feed-blocker-off]) — the popup toggle sets that
+   attribute via feed-toggle.js to pause feed hiding. */
+
+/* Home page feed wrapper. Verified against 9gag.com 2026-08-24 (logged out). */
+html:not([data-feed-blocker-off]) section#list-view-2 {
+  display: none !important;
+}

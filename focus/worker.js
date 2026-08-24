@@ -35,16 +35,39 @@ chrome.alarms.onAlarm.addListener(async (alarm) => {
   await chime();
 });
 
-// MV3 service workers can't play audio — an offscreen document does it.
+// Chrome's MV3 service workers can't play audio — an offscreen document does it.
+// Firefox has no chrome.offscreen API, but its "background.scripts" fallback
+// (see manifest.json) runs as a page context with AudioContext, so play directly.
+// Unverified on real Firefox — flag if the chime doesn't fire there.
 async function chime() {
-  if (!(await chrome.offscreen.hasDocument())) {
-    await chrome.offscreen.createDocument({
-      url: "focus/offscreen.html",
-      reasons: ["AUDIO_PLAYBACK"],
-      justification: "Play the focus/break transition chime",
-    });
+  if (chrome.offscreen) {
+    if (!(await chrome.offscreen.hasDocument())) {
+      await chrome.offscreen.createDocument({
+        url: "focus/offscreen.html",
+        reasons: ["AUDIO_PLAYBACK"],
+        justification: "Play the focus/break transition chime",
+      });
+    }
+    chrome.runtime.sendMessage({ cmd: "chime" });
+  } else if (typeof AudioContext !== "undefined") {
+    playChime();
   }
-  chrome.runtime.sendMessage({ cmd: "chime" });
+}
+
+function playChime() {
+  const ctx = new AudioContext();
+  [880, 1174.66].forEach((freq, i) => {
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.frequency.value = freq;
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    const t = ctx.currentTime + i * 0.3;
+    gain.gain.setValueAtTime(0.35, t);
+    gain.gain.exponentialRampToValueAtTime(0.001, t + 1.2);
+    osc.start(t);
+    osc.stop(t + 1.2);
+  });
 }
 
 // Browser restart mid-phase: re-arm the alarm, or clear an expired session.

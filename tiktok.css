@@ -1,0 +1,10 @@
+/* All rules guarded by :not([data-feed-blocker-off]) — the popup toggle sets that
+   attribute via feed-toggle.js to pause feed hiding. */
+
+/* For You home feed items. data-e2e is TikTok's own stable testid convention,
+   unlike the hashed class names on the surrounding wrapper divs.
+   Verified against tiktok.com 2026-08-24 (logged out); does not match on
+   profile pages (@user/video grids use a different data-e2e). */
+html:not([data-feed-blocker-off]) article[data-e2e="recommend-list-item-container"] {
+  display: none !important;
+}

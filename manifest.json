@@ -1,11 +1,18 @@
 {
   "manifest_version": 3,
   "name": "Feed Blocker",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Hides Facebook, Twitter/X and YouTube feeds, plus a focus timer that hard-blocks distracting sites.",
+  "icons": { "16": "icons/16.png", "48": "icons/48.png", "128": "icons/128.png" },
   "permissions": ["storage", "alarms", "offscreen"],
-  "background": { "service_worker": "focus/worker.js" },
-  "action": { "default_popup": "focus/popup.html" },
+  "background": { "service_worker": "focus/worker.js", "scripts": ["focus/worker.js"] },
+  "action": {
+    "default_popup": "focus/popup.html",
+    "default_icon": { "16": "icons/16.png", "48": "icons/48.png", "128": "icons/128.png" }
+  },
+  "browser_specific_settings": {
+    "gecko": { "id": "feed-blocker@kornelovics" }
+  },
   "content_scripts": [
     {
       "matches": [
@@ -36,6 +43,18 @@
     {
       "matches": ["*://*.youtube.com/*"],
       "css": ["youtube.css"],
+      "js": ["feed-toggle.js"],
+      "run_at": "document_start"
+    },
+    {
+      "matches": ["*://*.9gag.com/*"],
+      "css": ["9gag.css"],
+      "js": ["feed-toggle.js"],
+      "run_at": "document_start"
+    },
+    {
+      "matches": ["*://*.tiktok.com/*"],
+      "css": ["tiktok.css"],
       "js": ["feed-toggle.js"],
       "run_at": "document_start"
     }
